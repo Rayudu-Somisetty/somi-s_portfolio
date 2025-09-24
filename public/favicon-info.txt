@@ -1,0 +1,3 @@
+<!-- Simple HTML favicon replacement -->
+<!-- This will serve as a placeholder until a proper ICO is generated -->
+<!-- Browser will fall back to the SVG favicon -->
