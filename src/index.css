@@ -138,6 +138,31 @@ All colors MUST be HSL.
     background: hsl(var(--background));
     transition: background-color 0.3s ease, color 0.3s ease;
     position: relative;
+    line-height: 1.6;
+  }
+
+  /* WCAG-compliant focus states for all interactive elements */
+  a:focus, button:focus, input:focus, textarea:focus, [tabindex]:focus {
+    outline: 2px solid hsl(var(--primary));
+    outline-offset: 2px;
+  }
+
+  /* Enhanced focus ring for buttons */
+  button:focus-visible {
+    box-shadow: 0 0 0 3px hsl(var(--primary) / 0.5);
+  }
+
+  /* WCAG-compliant text contrast improvements */
+  .text-muted-foreground {
+    color: hsl(var(--muted-foreground));
+  }
+
+  .dark .text-muted-foreground {
+    color: hsl(0 0% 70%);
+  }
+
+  .light .text-muted-foreground {
+    color: hsl(220 30% 40%);
   }
 
   /* Dark theme background */
@@ -169,12 +194,7 @@ All colors MUST be HSL.
   /* Light theme background */
   .light body {
     background: hsl(var(--background));
-    background-image: 
-      radial-gradient(circle at 25% 25%, rgba(99, 102, 241, 0.05) 0%, transparent 25%),
-      radial-gradient(circle at 75% 75%, rgba(139, 92, 246, 0.04) 0%, transparent 25%),
-      radial-gradient(circle at 75% 25%, rgba(236, 72, 153, 0.03) 0%, transparent 25%),
-      radial-gradient(circle at 25% 75%, rgba(59, 130, 246, 0.04) 0%, transparent 25%);
-    background-attachment: fixed;
+    line-height: 1.6;
   }
 
   .light body::before {
@@ -278,15 +298,6 @@ All colors MUST be HSL.
       width: 250px;
       height: 250px;
     }
-  }
-
-  .profile-photo {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 50%;
-    background: hsl(var(--background));
-    transition: all 0.3s ease;
   }
 
   .photo-border {
@@ -412,28 +423,57 @@ All colors MUST be HSL.
 }
 
 @layer utilities {
-  /* Custom animations */
-  @keyframes ring-float {
-    0%, 100% { transform: rotateX(60deg) rotateY(20deg) translateY(0px); }
-    50% { transform: rotateX(60deg) rotateY(20deg) translateY(-10px); }
+  /* Typography improvements for readability */
+  .prose-readable {
+    line-height: 1.6;
   }
 
-  @keyframes ring-rotate-3d {
-    from { transform: rotateX(60deg) rotateY(20deg) rotateZ(0deg); }
-    to { transform: rotateX(60deg) rotateY(20deg) rotateZ(360deg); }
+  .prose-readable-sm {
+    line-height: 1.5;
   }
 
-  @keyframes ring-inner-rotate {
-    from { transform: translateZ(30px) rotate(0deg); }
-    to { transform: translateZ(30px) rotate(360deg); }
+  /* Mobile touch target improvements */
+  .touch-target {
+    min-height: 48px;
+    min-width: 48px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  /* Remove photo animation - keep it stationary */
-  @keyframes photo-glow {
-    0% { filter: drop-shadow(0 10px 30px hsl(var(--primary) / 0.3)) contrast(1.3) brightness(1.2) saturate(1.2); }
-    100% { filter: drop-shadow(0 10px 30px hsl(var(--primary) / 0.7)) contrast(1.3) brightness(1.2) saturate(1.2); }
+  /* Section spacing for visual hierarchy */
+  .section-spacing {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
   }
 
+  /* Enhanced button focus styles */
+  .btn-focus {
+    focus: outline-none;
+    focus-visible: ring-2 ring-ring ring-offset-2 ring-offset-background;
+  }
+
+  /* Distinct focus indicator for interactive elements */
+  .interactive-focus {
+    position: relative;
+  }
+
+  .interactive-focus::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    border: 2px solid transparent;
+    transition: border-color 0.2s ease;
+    pointer-events: none;
+  }
+
+  .interactive-focus:focus::after {
+    border-color: hsl(var(--primary));
+    box-shadow: 0 0 0 4px hsl(var(--primary) / 0.3);
+  }
+
+  /* Float animation for scroll indicator */
   @keyframes float {
     0%, 100% { transform: translateY(0px); }
     50% { transform: translateY(-10px); }
@@ -1053,5 +1093,181 @@ All colors MUST be HSL.
   /* Smooth theme transition */
   * {
     transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  }
+
+  /* Custom Cursor Styles - from model */
+  .cursor-inner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 8px;
+    height: 8px;
+    background: hsl(var(--primary));
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transition: all 0.1s ease;
+  }
+
+  .cursor-outer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 40px;
+    height: 40px;
+    border: 2px solid hsl(var(--primary) / 0.5);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9998;
+    transition: all 0.3s ease;
+  }
+
+  .cursor-inner.hover,
+  .cursor-outer.hover {
+    transform: scale(2);
+    background: hsl(var(--accent));
+    border-color: hsl(var(--accent) / 0.8);
+  }
+
+  /* Jello Letter Animation - from model */
+  .jello {
+    display: inline-block;
+    animation: jello 1s;
+    animation-iteration-count: infinite;
+    transform-origin: center;
+  }
+
+  @keyframes jello {
+    0% { transform: scale3d(1, 1, 1); }
+    30% { transform: scale3d(1.25, 0.75, 1); }
+    40% { transform: scale3d(0.75, 1.25, 1); }
+    50% { transform: scale3d(1.15, 0.85, 1); }
+    65% { transform: scale3d(0.95, 1.05, 1); }
+    75% { transform: scale3d(1.05, 0.95, 1); }
+    100% { transform: scale3d(1, 1, 1); }
+  }
+
+  /* Tech Stack Styles - from model */
+  .tech-stack-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .tech-stack-box {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem;
+    background: hsl(var(--card));
+    border-radius: 0.75rem;
+    border: 1px solid hsl(var(--border));
+    transition: all 0.3s ease;
+    cursor: default;
+    min-width: 80px;
+  }
+
+  .tech-stack-box:hover {
+    transform: translateY(-5px) scale(1.05);
+    border-color: hsl(var(--primary) / 0.5);
+    box-shadow: 0 10px 25px hsl(var(--primary) / 0.2);
+  }
+
+  .tech-stack-logo {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    margin-bottom: 0.5rem;
+    filter: grayscale(30%);
+    transition: filter 0.3s ease;
+  }
+
+  .tech-stack-box:hover .tech-stack-logo {
+    filter: grayscale(0);
+  }
+
+  .tooltip {
+    position: absolute;
+    bottom: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: hsl(var(--background));
+    color: hsl(var(--foreground));
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.75rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    border: 1px solid hsl(var(--border));
+  }
+
+  .tech-stack-box:hover .tooltip {
+    opacity: 1;
+  }
+
+  /* Blob Background - from model */
+  .blob {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, hsl(var(--primary) / 0.1) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: -1;
+    animation: blob-pulse 4s ease-in-out infinite;
+  }
+
+  @keyframes blob-pulse {
+    0%, 100% { transform: scale(1); opacity: 0.3; }
+    50% { transform: scale(1.2); opacity: 0.5; }
+  }
+
+  /* Project Box Styles - enhanced */
+  .project-box {
+    position: relative;
+    background: hsl(var(--card));
+    border: 1px solid hsl(var(--border));
+    border-radius: 1rem;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    overflow: hidden;
+  }
+
+  .project-box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 25px 50px hsl(var(--background) / 0.5);
+    border-color: hsl(var(--primary) / 0.3);
+  }
+
+  .faviconforProject {
+    width: 24px;
+    height: 24px;
+    margin-right: 0.5rem;
+    vertical-align: middle;
+  }
+
+  /* Back to Top Button */
+  .back-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: hsl(var(--primary) / 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid hsl(var(--primary) / 0.2);
+    border-radius: 50%;
+    padding: 0.75rem;
+    cursor: pointer;
+    z-index: 90;
+    transition: all 0.3s ease;
+  }
+
+  .back-to-top:hover {
+    background: hsl(var(--primary) / 0.2);
+    transform: translateY(-5px);
   }
 }

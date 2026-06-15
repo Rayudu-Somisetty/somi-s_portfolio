@@ -107,17 +107,17 @@ const CertificationsSection = () => {
     <section
       id="certifications"
       ref={sectionRef}
-      className="min-h-screen py-20 px-4"
+      className="min-h-screen py-24 px-4"
     >
       <div className="max-w-7xl mx-auto">
         <div
-          className={`fade-in-up ${isVisible ? 'animate' : ''} text-center mb-16`}
+          className={`fade-in-up ${isVisible ? 'animate' : ''} text-center mb-20`}
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-primary-gradient">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-primary-gradient">
             Certifications & Achievements
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Professional certifications and academic achievements that demonstrate my commitment to continuous learning
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            Professional certifications and academic achievements demonstrating my commitment to continuous learning and skill development
           </p>
         </div>
 
@@ -140,14 +140,15 @@ const CertificationsSection = () => {
                       {cert.type}
                     </span>
                   </div>
-                  <a
-                    href={cert.verifyUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`text-muted-foreground hover:text-primary transition-colors ${cert.verifyUrl === '#' ? 'pointer-events-none opacity-50' : ''}`}
-                  >
-                    <ExternalLink className="w-4 h-4" />
-                  </a>
+<a
+                     href={cert.verifyUrl}
+                     target="_blank"
+                     rel="noopener noreferrer"
+                     className={`p-2 h-12 w-12 flex items-center justify-center text-muted-foreground hover:text-primary transition-colors rounded-lg focus:ring-2 focus:ring-primary ${cert.verifyUrl === '#' ? 'pointer-events-none opacity-50' : ''}`}
+                     aria-label={`Verify ${cert.title}`}
+                   >
+                     <ExternalLink className="w-5 h-5" />
+                   </a>
                 </div>
 
                 <h4 className="text-xl font-semibold mb-2 text-gradient group-hover:text-primary transition-colors">
@@ -205,14 +206,15 @@ const CertificationsSection = () => {
                     </h4>
                     <p className="text-sm text-muted-foreground">{cert.issuer}</p>
                   </div>
-                  <a
-                    href={cert.verifyUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`text-muted-foreground hover:text-primary transition-colors ${cert.verifyUrl === '#' ? 'pointer-events-none opacity-50' : ''}`}
-                  >
-                    <ExternalLink className="w-4 h-4" />
-                  </a>
+<a
+                     href={cert.verifyUrl}
+                     target="_blank"
+                     rel="noopener noreferrer"
+                     className={`p-2 h-12 w-12 flex items-center justify-center text-muted-foreground hover:text-primary transition-colors rounded-lg focus:ring-2 focus:ring-primary ${cert.verifyUrl === '#' ? 'pointer-events-none opacity-50' : ''}`}
+                     aria-label={`Verify ${cert.title}`}
+                   >
+                     <ExternalLink className="w-5 h-5" />
+                   </a>
                 </div>
                 
                 <div className="flex items-center text-xs text-muted-foreground mb-2">
