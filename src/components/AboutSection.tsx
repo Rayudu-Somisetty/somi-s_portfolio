@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
 import { GraduationCap, MapPin, Heart } from 'lucide-react';
-import { Code, Database, Globe, Brain, Zap, Settings } from 'lucide-react';
 
 const AboutSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -26,18 +25,6 @@ const AboutSection = () => {
       }
     };
   }, []);
-
-  const techStackItems = [
-    { name: 'HTML', icon: Code },
-    { name: 'CSS', icon: Code },
-    { name: 'JavaScript', icon: Code },
-    { name: 'Tailwind CSS', icon: Code },
-    { name: 'React', icon: Globe },
-    { name: 'Node.js', icon: Database },
-    { name: 'Git', icon: Settings },
-    { name: 'GitHub', icon: Code },
-    { name: 'Figma', icon: Code },
-  ];
 
   return (
     <section
@@ -108,24 +95,6 @@ const AboutSection = () => {
                 >
                   {interest}
                 </span>
-              ))}
-            </div>
-          </div>
-
-          {/* Tech Stack Section */}
-          <div className="portfolio-card p-6" data-aos="fade-up">
-            <h3 className="text-lg font-semibold mb-4 text-gradient">Tech Stack</h3>
-            <div className="flex flex-wrap justify-center gap-3">
-              {techStackItems.map((item, index) => (
-                <div 
-                  key={item.name} 
-                  className="flex flex-col items-center p-2 bg-card rounded-lg border border-border hover:border-primary/50 transition-all"
-                  data-aos="fade-up" 
-                  data-aos-delay={100 + index * 50}
-                >
-                  <item.icon className="w-8 h-8 text-primary mb-1" />
-                  <span className="text-xs text-muted-foreground">{item.name}</span>
-                </div>
               ))}
             </div>
           </div>

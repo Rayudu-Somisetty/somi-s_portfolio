@@ -16,12 +16,11 @@ interface ThemeProviderProps {
 
 export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
   const [theme, setThemeState] = useState<Theme>(() => {
-    // Check localStorage first, then system preference, default to dark
+    // Default to dark mode; saved user preference overrides it.
     const savedTheme = localStorage.getItem('portfolio-theme') as Theme;
     if (savedTheme) return savedTheme;
-    
-    const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    return systemTheme;
+
+    return 'dark';
   });
 
   useEffect(() => {

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Crown, Star, Award, Zap, Code, Database, Globe, Settings, Users, Brain } from 'lucide-react';
+import { Code, Database, Globe, Settings, Brain, Zap } from 'lucide-react';
 
 const skillsData = {
   "Frontend": [

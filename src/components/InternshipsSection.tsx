@@ -56,7 +56,7 @@ const InternshipsSection = () => {
           className={`fade-in-up ${isVisible ? 'animate' : ''} text-center mb-16`}
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4 text-primary-gradient">
-            Professional Experience
+            Internships
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             My journey through internships and professional development opportunities
@@ -139,29 +139,6 @@ const InternshipsSection = () => {
               </div>
             </div>
           ))}
-        </div>
-
-        {/* Call to action */}
-        <div
-          className={`fade-in-up ${isVisible ? 'animate' : ''} text-center mt-20`}
-          style={{ animationDelay: '0.8s' }}
-        >
-          <div className="portfolio-card p-10 max-w-2xl mx-auto">
-            <h3 className="text-2xl font-semibold mb-5 text-gradient">
-              Open to New Opportunities
-            </h3>
-            <p className="text-muted-foreground mb-8 leading-relaxed">
-              I'm actively seeking internship and full-time opportunities in AI/ML, web development, 
-              and software engineering where I can apply my technical skills and continue learning 
-              from experienced professionals in dynamic environments.
-            </p>
-            <a 
-              href="#contact"
-              className="inline-block px-8 py-4 bg-gradient-primary text-primary-foreground rounded-xl font-bold text-base hover:scale-105 transition-transform shadow-2xl hover:shadow-primary/25 focus:ring-2 focus:ring-primary min-w-[200px]"
-            >
-              Let's Connect
-            </a>
-          </div>
         </div>
       </div>
     </section>
