@@ -32,8 +32,10 @@ const CertificationsSection = () => {
       issuer: 'Bharatversity & Launchpad BITS Pilani Hyderabad',
       date: 'July 2025',
       credentialId: 'BHARATVERSITY-AIML-2025',
-      verifyUrl: 'https://www.linkedin.com/in/rayudusomisetty-d4912/details/certifications/1758219291033/single-media-viewer/?profileId=ACoAAEcIwwsBIuvP3rttIWHHajMuPxGh0yhFrOA',
-      description: 'Intensive summer internship program in Artificial Intelligence and Machine Learning with 21 days of classroom training and hands-on project execution.',
+      verifyUrl:
+        'https://www.linkedin.com/in/rayudusomisetty-d4912/details/certifications/1758219291033/single-media-viewer/?profileId=ACoAAEcIwwsBIuvP3rttIWHHajMuPxGh0yhFrOA',
+      description:
+        'Intensive summer internship program in Artificial Intelligence and Machine Learning with 21 days of classroom training and hands-on project execution.',
       skills: ['Artificial Intelligence', 'Machine Learning', 'Python', 'Data Science', 'Model Training'],
       type: 'Internship Certification',
       featured: true,
@@ -44,7 +46,8 @@ const CertificationsSection = () => {
       date: 'Previous',
       credentialId: 'GOOGLE-DA-COURSERA',
       verifyUrl: 'https://coursera.org/verify/professional-cert',
-      description: 'Comprehensive program covering data analysis tools and techniques including data cleaning, analysis, and visualization using industry-standard tools.',
+      description:
+        'Comprehensive program covering data analysis tools and techniques including data cleaning, analysis, and visualization using industry-standard tools.',
       skills: ['Data Analytics', 'SQL', 'Data Visualization', 'Statistical Analysis', 'Excel'],
       type: 'Professional Certificate',
       featured: true,
@@ -55,7 +58,8 @@ const CertificationsSection = () => {
       date: 'Current',
       credentialId: 'GITHUB-PRO-ACTIVE',
       verifyUrl: 'https://github.com/Rayudu-Somisetty',
-      description: 'Advanced development tools and features access with GitHub Pro membership for enhanced collaboration and repository management.',
+      description:
+        'Advanced development tools and features access with GitHub Pro membership for enhanced collaboration and repository management.',
       skills: ['Git', 'Version Control', 'Collaboration', 'Open Source', 'Repository Management'],
       type: 'Platform Membership',
       featured: false,
@@ -66,7 +70,8 @@ const CertificationsSection = () => {
       date: '2024',
       credentialId: 'JPMC-FORAGE-SE',
       verifyUrl: 'https://github.com/Rayudu-Somisetty/forage-midas',
-      description: 'Corporate software engineering training program covering advanced Java development practices and enterprise-level software engineering methodologies.',
+      description:
+        'Corporate software engineering training program covering advanced Java development practices and enterprise-level software engineering methodologies.',
       skills: ['Java', 'Software Engineering', 'Enterprise Development', 'Corporate Practices'],
       type: 'Corporate Training',
       featured: false,
@@ -76,19 +81,22 @@ const CertificationsSection = () => {
   const achievements = [
     {
       title: 'GitHub Community Contributions',
-      description: 'Active GitHub contributor with 33+ contributions in the last year and 3 followers',
+      description:
+        'Active GitHub contributor with 33+ contributions in the last year and 3 followers',
       date: '2024 - Present',
       type: 'Open Source',
     },
     {
       title: 'Multi-Platform Deployment Experience',
-      description: 'Successfully deployed applications on Render, Netlify, and Hugging Face Spaces with CI/CD',
+      description:
+        'Successfully deployed applications on Render, Netlify, and Hugging Face Spaces with CI/CD',
       date: '2024 - 2025',
       type: 'DevOps',
     },
     {
       title: 'Full Stack Project Portfolio',
-      description: 'Developed and deployed 10+ repositories showcasing various technologies and frameworks',
+      description:
+        'Developed and deployed 10+ repositories showcasing various technologies and frameworks',
       date: '2023 - Present',
       type: 'Development',
     },
@@ -100,22 +108,14 @@ const CertificationsSection = () => {
     },
   ];
 
-  const featuredCertifications = certifications.filter(cert => cert.featured);
-  const otherCertifications = certifications.filter(cert => !cert.featured);
+  const featuredCertifications = certifications.filter((cert) => cert.featured);
+  const otherCertifications = certifications.filter((cert) => !cert.featured);
 
   return (
-    <section
-      id="certifications"
-      ref={sectionRef}
-      className="min-h-screen py-24 px-4"
-    >
+    <section id="certifications" ref={sectionRef} className="section-spacing section-x-padding">
       <div className="max-w-7xl mx-auto">
-        <div
-          className={`fade-in-up ${isVisible ? 'animate' : ''} text-center mb-20`}
-        >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-primary-gradient">
-            Certifications & Achievements
-          </h2>
+        <div className={`fade-in-up ${isVisible ? 'animate' : ''} text-center mb-20`}>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-primary-gradient">Certifications & Achievements</h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             Professional certifications and academic achievements demonstrating my commitment to continuous learning and skill development
           </p>
@@ -123,9 +123,7 @@ const CertificationsSection = () => {
 
         {/* Featured Certifications */}
         <div className="mb-16">
-          <h3 className="text-2xl font-semibold mb-8 text-center text-gradient">
-            Professional Certifications
-          </h3>
+          <h3 className="text-2xl font-semibold mb-8 text-center text-gradient">Professional Certifications</h3>
           <div className="grid md:grid-cols-2 gap-8">
             {featuredCertifications.map((cert, index) => (
               <div
@@ -140,39 +138,33 @@ const CertificationsSection = () => {
                       {cert.type}
                     </span>
                   </div>
-<a
-                     href={cert.verifyUrl}
-                     target="_blank"
-                     rel="noopener noreferrer"
-                     className={`p-2 h-12 w-12 flex items-center justify-center text-muted-foreground hover:text-primary transition-colors rounded-lg focus:ring-2 focus:ring-primary ${cert.verifyUrl === '#' ? 'pointer-events-none opacity-50' : ''}`}
-                     aria-label={`Verify ${cert.title}`}
-                   >
-                     <ExternalLink className="w-5 h-5" />
-                   </a>
+
+                  <a
+                    href={cert.verifyUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-2 h-12 w-12 flex items-center justify-center text-muted-foreground hover:text-primary transition-colors rounded-lg focus:ring-2 focus:ring-primary"
+                    aria-label={`Verify ${cert.title}`}
+                  >
+                    <ExternalLink className="w-5 h-5" />
+                  </a>
                 </div>
 
-                <h4 className="text-xl font-semibold mb-2 text-gradient group-hover:text-primary transition-colors">
-                  {cert.title}
-                </h4>
+                <h4 className="text-xl font-semibold mb-2 text-gradient group-hover:text-primary transition-colors">{cert.title}</h4>
                 <p className="text-muted-foreground font-medium mb-2">{cert.issuer}</p>
-                
+
                 <div className="flex items-center text-sm text-muted-foreground mb-4">
                   <Calendar className="w-4 h-4 mr-2" />
                   {cert.date}
                 </div>
 
-                <p className="text-muted-foreground text-sm leading-relaxed mb-4">
-                  {cert.description}
-                </p>
+                <p className="text-muted-foreground text-sm leading-relaxed mb-4">{cert.description}</p>
 
                 <div className="mb-4">
                   <h5 className="font-medium text-foreground mb-2">Skills Validated</h5>
                   <div className="flex flex-wrap gap-2">
                     {cert.skills.map((skill) => (
-                      <span
-                        key={skill}
-                        className="px-2 py-1 bg-accent/10 text-accent rounded text-xs border border-accent/20"
-                      >
+                      <span key={skill} className="px-2 py-1 bg-accent/10 text-accent rounded text-xs border border-accent/20">
                         {skill}
                       </span>
                     ))}
@@ -189,9 +181,7 @@ const CertificationsSection = () => {
 
         {/* Other Certifications */}
         <div className="mb-16">
-          <h3 className="text-2xl font-semibold mb-8 text-center text-gradient">
-            Additional Certifications
-          </h3>
+          <h3 className="text-2xl font-semibold mb-8 text-center text-gradient">Additional Certifications</h3>
           <div className="grid md:grid-cols-2 gap-6">
             {otherCertifications.map((cert, index) => (
               <div
@@ -201,22 +191,21 @@ const CertificationsSection = () => {
               >
                 <div className="flex justify-between items-start mb-3">
                   <div>
-                    <h4 className="font-semibold text-foreground group-hover:text-primary transition-colors">
-                      {cert.title}
-                    </h4>
+                    <h4 className="font-semibold text-foreground group-hover:text-primary transition-colors">{cert.title}</h4>
                     <p className="text-sm text-muted-foreground">{cert.issuer}</p>
                   </div>
-<a
-                     href={cert.verifyUrl}
-                     target="_blank"
-                     rel="noopener noreferrer"
-                     className={`p-2 h-12 w-12 flex items-center justify-center text-muted-foreground hover:text-primary transition-colors rounded-lg focus:ring-2 focus:ring-primary ${cert.verifyUrl === '#' ? 'pointer-events-none opacity-50' : ''}`}
-                     aria-label={`Verify ${cert.title}`}
-                   >
-                     <ExternalLink className="w-5 h-5" />
-                   </a>
+
+                  <a
+                    href={cert.verifyUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-2 h-12 w-12 flex items-center justify-center text-muted-foreground hover:text-primary transition-colors rounded-lg focus:ring-2 focus:ring-primary"
+                    aria-label={`Verify ${cert.title}`}
+                  >
+                    <ExternalLink className="w-5 h-5" />
+                  </a>
                 </div>
-                
+
                 <div className="flex items-center text-xs text-muted-foreground mb-2">
                   <Calendar className="w-3 h-3 mr-1" />
                   {cert.date}
@@ -224,17 +213,12 @@ const CertificationsSection = () => {
 
                 <div className="flex flex-wrap gap-1">
                   {cert.skills.slice(0, 3).map((skill) => (
-                    <span
-                      key={skill}
-                      className="px-2 py-1 bg-muted text-muted-foreground rounded text-xs"
-                    >
+                    <span key={skill} className="px-2 py-1 bg-muted text-muted-foreground rounded text-xs">
                       {skill}
                     </span>
                   ))}
                   {cert.skills.length > 3 && (
-                    <span className="px-2 py-1 text-muted-foreground text-xs">
-                      +{cert.skills.length - 3} more
-                    </span>
+                    <span className="px-2 py-1 text-muted-foreground text-xs">+{cert.skills.length - 3} more</span>
                   )}
                 </div>
               </div>
@@ -243,39 +227,22 @@ const CertificationsSection = () => {
         </div>
 
         {/* Achievements */}
-        <div
-          className={`fade-in-up ${isVisible ? 'animate' : ''}`}
-          style={{ animationDelay: '0.8s' }}
-        >
-          <h3 className="text-2xl font-semibold mb-8 text-center text-gradient">
-            Academic & Professional Achievements
-          </h3>
+        <div className={`fade-in-up ${isVisible ? 'animate' : ''}`} style={{ animationDelay: '0.8s' }}>
+          <h3 className="text-2xl font-semibold mb-8 text-center text-gradient">Academic & Professional Achievements</h3>
           <div className="grid md:grid-cols-2 gap-6">
             {achievements.map((achievement, index) => (
-              <div
-                key={achievement.title}
-                className="portfolio-card p-6 group"
-                style={{ animationDelay: `${1 + index * 0.1}s` }}
-              >
+              <div key={achievement.title} className="portfolio-card p-6 group" style={{ animationDelay: `${1 + index * 0.1}s` }}>
                 <div className="flex items-start mb-3">
                   <CheckCircle className="w-5 h-5 text-primary mr-3 mt-0.5 flex-shrink-0" />
                   <div>
-                    <h4 className="font-semibold text-foreground group-hover:text-primary transition-colors">
-                      {achievement.title}
-                    </h4>
-                    <p className="text-sm text-muted-foreground leading-relaxed mt-1">
-                      {achievement.description}
-                    </p>
+                    <h4 className="font-semibold text-foreground group-hover:text-primary transition-colors">{achievement.title}</h4>
+                    <p className="text-sm text-muted-foreground leading-relaxed mt-1">{achievement.description}</p>
                   </div>
                 </div>
-                
+
                 <div className="flex justify-between items-center">
-                  <div className="text-xs text-muted-foreground">
-                    {achievement.date}
-                  </div>
-                  <span className="px-2 py-1 bg-secondary/10 text-secondary rounded text-xs border border-secondary/20">
-                    {achievement.type}
-                  </span>
+                  <div className="text-xs text-muted-foreground">{achievement.date}</div>
+                  <span className="px-2 py-1 bg-secondary/10 text-secondary rounded text-xs border border-secondary/20">{achievement.type}</span>
                 </div>
               </div>
             ))}
@@ -287,3 +254,4 @@ const CertificationsSection = () => {
 };
 
 export default CertificationsSection;
+

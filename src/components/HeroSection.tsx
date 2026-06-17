@@ -44,18 +44,13 @@ const HeroSection = () => {
         <div className="hero-grid-field" />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 py-12 w-full">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          <div className="hero-content space-y-8 lg:pr-8">
-            <div className="space-y-4">
-              <div className="inline-flex items-center rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-sm text-muted-foreground shadow-lg shadow-primary/5 backdrop-blur-xl font-mono">
-                Hey!&nbsp;
-                <span className="font-bold text-primary">I&apos;m</span>
-              </div>
-
+      <div className="relative z-10 max-w-7xl mx-auto px-6 pt-20 pb-12 w-full">
+        <div className="grid lg:grid-cols-2 gap-14 items-center">
+          <div className="hero-content space-y-6 lg:pr-8">
+            <div className="space-y-1">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight font-mono jitter-name">
                 <span className="text-gradient">
-                  {'Rayudu Somisetty'.split('').map((letter, index) => (
+                  {'Rayudu Somi Setty'.split('').map((letter, index) => (
                     <span
                       key={index}
                       className={`inline-block ${letter === ' ' ? 'inline-block w-4' : 'jitter-name-letter'}`}
@@ -65,11 +60,6 @@ const HeroSection = () => {
                   ))}
                 </span>
               </h1>
-
-              <h2 className="text-lg md:text-xl font-semibold text-primary font-mono">
-                CSE Student / Full-Stack Developer / AI/ML Enthusiast
-              </h2>
-
               <div className="text-base md:text-lg text-accent font-medium font-mono min-h-[2rem] flex items-center">
                 <span>{roleText.displayedText}<span className="animate-pulse">|</span></span>
               </div>

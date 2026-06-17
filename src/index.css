@@ -374,9 +374,11 @@ All colors MUST be HSL.
     background: transparent;
     padding: 0.35rem 0 0.35rem 0.78rem;
     color: hsl(var(--foreground) / 0.78);
-    font-size: 0.86rem;
+    font-size: clamp(0.78rem, 0.72rem + 0.22vw, 0.86rem);
     font-weight: 600;
     letter-spacing: 0;
+    line-height: 1.2;
+    white-space: nowrap;
     transition: color 0.24s ease, transform 0.24s ease;
   }
 
@@ -510,8 +512,21 @@ All colors MUST be HSL.
 
   /* Section spacing for visual hierarchy */
   .section-spacing {
-    padding-top: 6rem;
-    padding-bottom: 6rem;
+    padding-top: 5.5rem;
+    padding-bottom: 5.5rem;
+  }
+
+  /* Consistent horizontal padding for main sections */
+  .section-x-padding {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  @media (max-width: 640px) {
+    .section-x-padding {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
   }
 
   /* Enhanced button focus styles */
@@ -661,6 +676,14 @@ All colors MUST be HSL.
 
   .hero-content {
     animation: hero-fade-in 1s ease-out;
+  }
+
+  .hero-name {
+    display: block;
+    max-width: 11ch;
+    font-size: clamp(3.5rem, 6vw, 5.75rem);
+    overflow-wrap: normal;
+    text-wrap: balance;
   }
 
   @keyframes hero-fade-in {
@@ -1268,9 +1291,18 @@ All colors MUST be HSL.
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
-    filter: brightness(1.25);
-    transition: transform 0.1s ease-out;
-    will-change: transform;
+    transform: translate3d(-9999px, -9999px, 0) translate3d(-50%, -50%, 0);
+    transition: filter 0.2s ease-out, opacity 0.2s ease-out;
+    contain: layout paint style;
+    will-change: transform, filter;
+  }
+
+  .cursor-inner--dark {
+    filter: brightness(1.25) saturate(1.05);
+  }
+
+  .cursor-inner--light {
+    filter: brightness(0.78) contrast(1.08) saturate(0.94) drop-shadow(0 2px 10px rgba(15, 23, 42, 0.18));
   }
 
   .nav-favicon-button {
@@ -1292,7 +1324,7 @@ All colors MUST be HSL.
     z-index: 1;
     display: grid;
     place-items: center;
-    transform: translateY(5px);
+    transform: translateY(4px);
     will-change: transform;
   }
 
@@ -1308,8 +1340,19 @@ All colors MUST be HSL.
   .nav-favicon-button:hover .nav-favicon-icon,
   .nav-favicon-button:focus-visible .nav-favicon-icon {
     opacity: 0.96;
-    transform: perspective(180px) rotateX(10deg) rotateY(-8deg) rotateZ(3deg) translate3d(0, 58px, 0) scale(0.94);
+    transform: perspective(180px) rotateX(10deg) rotateY(-8deg) rotateZ(3deg) translate3d(0, 52px, 0) scale(0.94);
     filter: drop-shadow(0 18px 26px hsl(var(--accent) / 0.28)) brightness(1.12);
+  }
+
+  @media (min-width: 640px) {
+    .nav-favicon-orbit {
+      transform: translateY(5px);
+    }
+
+    .nav-favicon-button:hover .nav-favicon-icon,
+    .nav-favicon-button:focus-visible .nav-favicon-icon {
+      transform: perspective(180px) rotateX(10deg) rotateY(-8deg) rotateZ(3deg) translate3d(0, 58px, 0) scale(0.94);
+    }
   }
 
   @keyframes avatar-float {
@@ -1327,15 +1370,70 @@ All colors MUST be HSL.
     }
   }
 
-  /* Performance-friendly name jitter: transform-only animation */
-  .jitter-name .jitter-name-letter {
+  /* Interactive Letter Hover Effects */
+  .interactive-letter {
     display: inline-block;
-    transform: translate3d(0, 0, 0);
-    will-change: transform;
-    color: hsl(var(--foreground));
-    -webkit-text-fill-color: hsl(var(--foreground));
-    background: none;
-    animation: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: default;
+    position: relative;
+    color: inherit;
+    opacity: 1;
+    filter: brightness(1);
+  }
+
+  .interactive-letter:hover {
+    transform: translateY(-8px) scale(1.1);
+    text-shadow: 
+      0 0 20px hsl(var(--primary) / 0.8),
+      0 0 40px hsl(var(--primary) / 0.6),
+      0 0 60px hsl(var(--primary) / 0.4);
+    filter: brightness(1.5);
+    z-index: 10;
+    color: hsl(var(--primary));
+  }
+
+  .interactive-letter:hover::before {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    background: radial-gradient(circle, hsl(var(--primary) / 0.3) 0%, transparent 70%);
+    border-radius: 50%;
+    z-index: -1;
+    animation: pulse-glow 0.6s ease-out;
+  }
+
+  @keyframes pulse-glow {
+    0% {
+      transform: scale(0.8);
+      opacity: 0;
+    }
+    50% {
+      transform: scale(1.2);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 0.7;
+    }
+  }
+
+  /* Letter bounce animation on hover */
+  .interactive-letter:active {
+    transform: translateY(-12px) scale(1.15);
+    transition: all 0.1s ease-out;
+  }
+
+  /* Wave effect for adjacent letters */
+  .interactive-letter:hover + .interactive-letter,
+  .interactive-letter:hover + .interactive-letter + .interactive-letter {
+    transform: translateY(-4px) scale(1.05);
+    text-shadow: 0 0 10px hsl(var(--primary) / 0.4);
+  }
+
+  .interactive-letter:has(+ .interactive-letter:hover),
+  .interactive-letter:has(+ .interactive-letter + .interactive-letter:hover) {
+    transform: translateY(-4px) scale(1.05);
+    text-shadow: 0 0 10px hsl(var(--primary) / 0.4);
   }
 
   .jitter-name .jitter-name-letter:hover {

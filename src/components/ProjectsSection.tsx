@@ -84,7 +84,7 @@ const ProjectsSection = () => {
     <section
       id="projects"
       ref={sectionRef}
-      className="py-20 px-6"
+className="section-spacing section-x-padding"
       data-aos="fade-up"
     >
       <div className="max-w-6xl mx-auto">

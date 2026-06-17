@@ -3,6 +3,10 @@ import { Menu, Moon, Music2, Sun, X } from 'lucide-react';
 import { useTheme } from '@/contexts/ThemeContext';
 
 const Navigation = () => {
+  // Keeps this component subscribed to theme state
+  // (so theme-related UI updates re-render reliably)
+
+
   const { theme, toggleTheme } = useTheme();
   const faviconUrl = `${import.meta.env.BASE_URL}favicon.ico?v=3`;
   const [isVisible, setIsVisible] = useState(true);
@@ -83,14 +87,14 @@ const Navigation = () => {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      
+
       // Hide nav when scrolling down, show when scrolling up
       if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
         setIsVisible(false);
       } else {
         setIsVisible(true);
       }
-      
+
       lastScrollY.current = currentScrollY;
       setIsScrolled(currentScrollY > 50);
     };
@@ -126,23 +130,21 @@ const Navigation = () => {
 
   return (
     <nav
-      className={`fixed top-3 left-4 right-4 z-50 overflow-hidden rounded-full border border-white/10 shadow-2xl shadow-primary/10 backdrop-blur-xl transition-all duration-300 sm:left-8 sm:right-8 lg:left-20 lg:right-20 ${
+      className={`fixed top-2 left-3 right-3 z-50 overflow-hidden border border-white/10 shadow-2xl shadow-primary/10 backdrop-blur-xl transition-all duration-300 sm:top-3 sm:left-6 sm:right-6 xl:left-20 xl:right-20 ${
         isVisible ? 'translate-y-0' : '-translate-y-full'
       } ${
-        isScrolled
-          ? 'bg-background/88'
-          : 'bg-background/68'
-      }`}
+        isScrolled ? 'bg-background/88' : 'bg-background/68'
+      } ${isMobileMenuOpen ? 'rounded-3xl' : 'rounded-full'}`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-7">
-        <div className="flex items-center justify-between h-14">
+      <div className="mx-auto max-w-7xl px-3 sm:px-5 xl:px-7">
+        <div className="flex h-12 items-center justify-between sm:h-14">
           {/* Logo with Hey! */}
-          <div className="flex items-center gap-2">
-            <div className="text-sm font-semibold uppercase tracking-[0.18em] text-primary">Hey!</div>
+          <div className="flex min-w-0 items-center gap-1.5 sm:gap-2">
+            <div className="text-xs font-semibold uppercase tracking-[0.16em] text-primary sm:text-sm sm:tracking-[0.18em]">Hey!</div>
             <button
               ref={avatarButtonRef}
               type="button"
-              className="nav-favicon-button relative flex h-14 w-14 items-end justify-center border-0 bg-transparent p-0 focus:outline-none focus:ring-2 focus:ring-primary/60"
+              className="nav-favicon-button relative flex h-12 w-12 items-end justify-center border-0 bg-transparent p-0 focus:outline-none focus:ring-2 focus:ring-primary/60 sm:h-14 sm:w-14"
               style={avatarStyle}
               onPointerMove={updateAvatarMotion}
               onPointerLeave={resetAvatarMotion}
@@ -153,24 +155,24 @@ const Navigation = () => {
                 <img
                   src={faviconUrl}
                   alt=""
-                  className="nav-favicon-icon h-12 w-12 object-contain"
+                  className="nav-favicon-icon h-10 w-10 object-contain sm:h-12 sm:w-12"
                 />
               </span>
             </button>
           </div>
 
           {/* Right side content */}
-          <div className="flex items-center space-x-3">
+          <div className="flex items-center gap-2 sm:gap-3">
             {/* Desktop menu */}
-            <div className="hidden md:flex items-center gap-6">
+            <div className="hidden lg:flex items-center gap-4 xl:gap-6">
               {navItems.map((item) => (
                 <button
                   key={item.name}
                   onClick={() => scrollToSection(item.href)}
                   className="nav-open-link"
-                  aria-label={`${item.name} menu button`}
+                  aria-label={`Go to ${item.name}`}
                 >
-                  &lt;/{item.name}&gt;
+                  {item.name}
                 </button>
               ))}
             </div>
@@ -178,32 +180,36 @@ const Navigation = () => {
             <button
               type="button"
               onClick={toggleTheme}
-              className="p-2 rounded-full border border-border bg-card/40 text-foreground hover:bg-primary/10 hover:text-primary hover:border-primary/40 transition-all"
+              className="p-1.5 rounded-full border border-border bg-card/40 text-foreground hover:bg-primary/10 hover:text-primary hover:border-primary/40 transition-all sm:p-2"
               aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to night mode'}
             >
-              {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+              {theme === 'dark' ? (
+                <Sun className="h-4 w-4 sm:h-5 sm:w-5" />
+              ) : (
+                <Moon className="h-4 w-4 sm:h-5 sm:w-5" />
+              )}
             </button>
 
             <button
               type="button"
               disabled
-              className="p-2 rounded-full border border-border bg-card/20 text-muted-foreground opacity-60"
+              className="p-1.5 rounded-full border border-border bg-card/20 text-muted-foreground opacity-60 sm:p-2"
               aria-label="Music player coming soon"
               title="Music player coming soon"
             >
-              <Music2 className="w-5 h-5" />
+              <Music2 className="h-4 w-4 sm:h-5 sm:w-5" />
             </button>
 
             {/* Mobile menu button */}
             <button
-              className="md:hidden p-2 rounded-lg hover:bg-muted transition-colors"
+              className="p-1.5 rounded-full border border-border bg-card/40 text-foreground hover:bg-primary/10 hover:text-primary hover:border-primary/40 transition-all lg:hidden sm:p-2"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label="Menu Button"
             >
               {isMobileMenuOpen ? (
-                <X className="w-6 h-6" />
+                <X className="h-4 w-4 sm:h-5 sm:w-5" />
               ) : (
-                <Menu className="w-6 h-6" />
+                <Menu className="h-4 w-4 sm:h-5 sm:w-5" />
               )}
             </button>
           </div>
@@ -211,15 +217,15 @@ const Navigation = () => {
 
         {/* Mobile menu */}
         {isMobileMenuOpen && (
-          <ul className="md:hidden px-2 pt-2 pb-3 space-y-1 bg-background/95 backdrop-blur-lg rounded-lg mt-2 border border-border">
+          <ul className="space-y-1 border-t border-white/10 px-1 pb-3 pt-2 lg:hidden sm:px-2">
             {navItems.map((item) => (
               <li key={item.name}>
                 <button
                   onClick={() => scrollToSection(item.href)}
-                  className="nav-open-link block w-full text-left px-2 py-2 my-1"
-                  aria-label={`${item.name} menu button`}
+                  className="nav-open-link block w-full text-left py-2.5 pl-4 pr-2"
+                  aria-label={`Go to ${item.name}`}
                 >
-                  &lt;/{item.name}&gt;
+                  {item.name}
                 </button>
               </li>
             ))}
@@ -231,3 +237,4 @@ const Navigation = () => {
 };
 
 export default Navigation;
+

@@ -14,7 +14,7 @@ const ContactSection = () => {
     <section
       id="contact"
       ref={sectionRef}
-      className="py-20 px-6"
+className="section-spacing section-x-padding"
     >
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-12">
@@ -81,7 +81,7 @@ const ContactSection = () => {
             "Learning, Living, and Leveling Up."
           </p>
           <p className="text-muted-foreground text-sm">
-            Design & Built by Rayudu Somisetty &copy; 2024-{new Date().getFullYear()}
+            Design & Built by Rayudu Somi Setty &copy; 2024-{new Date().getFullYear()}
           </p>
         </div>
       </div>

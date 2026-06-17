@@ -49,7 +49,7 @@ const InternshipsSection = () => {
     <section
       id="internships"
       ref={sectionRef}
-      className="min-h-screen py-20 px-4"
+className="min-h-screen section-spacing section-x-padding"
     >
       <div className="max-w-6xl mx-auto">
         <div
