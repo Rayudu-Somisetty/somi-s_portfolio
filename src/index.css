@@ -153,8 +153,8 @@ All colors MUST be HSL.
 
   /* WCAG-compliant focus states for all interactive elements */
   a:focus, button:focus, input:focus, textarea:focus, [tabindex]:focus {
-    outline: 2px solid hsl(var(--primary));
-    outline-offset: 2px;
+    outline: 3px solid hsl(var(--primary));
+    outline-offset: 3px;
   }
 
   /* Enhanced focus ring for buttons */
@@ -510,6 +510,11 @@ All colors MUST be HSL.
     justify-content: center;
   }
 
+  /* Glow-tinted primary text for ghost buttons on dark backgrounds */
+  .text-primary-glow {
+    color: hsl(var(--primary-glow));
+  }
+
   /* Section spacing for visual hierarchy */
   .section-spacing {
     padding-top: 5.5rem;
@@ -527,12 +532,6 @@ All colors MUST be HSL.
       padding-left: 1rem;
       padding-right: 1rem;
     }
-  }
-
-  /* Enhanced button focus styles */
-  .btn-focus {
-    focus: outline-none;
-    focus-visible: ring-2 ring-ring ring-offset-2 ring-offset-background;
   }
 
   /* Distinct focus indicator for interactive elements */
@@ -1594,6 +1593,21 @@ All colors MUST be HSL.
     height: 24px;
     margin-right: 0.5rem;
     vertical-align: middle;
+  }
+
+  /* Alternating section background for visual separation */
+  .section-alt {
+    position: relative;
+  }
+
+  .section-alt::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: hsl(var(--card));
+    opacity: 0.35;
+    pointer-events: none;
+    z-index: -1;
   }
 
   /* Back to Top Button */

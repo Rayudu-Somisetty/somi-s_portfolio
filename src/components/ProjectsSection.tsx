@@ -84,7 +84,7 @@ const ProjectsSection = () => {
     <section
       id="projects"
       ref={sectionRef}
-className="section-spacing section-x-padding"
+className="section-spacing section-x-padding section-alt"
       data-aos="fade-up"
     >
       <div className="max-w-6xl mx-auto">
@@ -129,7 +129,7 @@ className="section-spacing section-x-padding"
                   href={project.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-4 py-2 border-2 border-primary text-primary rounded-lg font-medium hover:bg-primary hover:text-primary-foreground transition-all duration-300 text-sm"
+                  className="px-4 py-2 border-2 border-primary text-primary-glow rounded-lg font-medium hover:bg-primary hover:text-primary-foreground transition-all duration-300 text-sm"
                 >
                   <Github className="w-4 h-4 inline mr-1" />
                   Code

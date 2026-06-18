@@ -30,7 +30,7 @@ const AboutSection = () => {
     <section
       id="about"
       ref={sectionRef}
-className="section-spacing section-x-padding"
+className="section-spacing section-x-padding section-alt"
       data-aos="fade-up"
     >
       <div className="max-w-4xl mx-auto">

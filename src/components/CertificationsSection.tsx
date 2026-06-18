@@ -112,7 +112,7 @@ const CertificationsSection = () => {
   const otherCertifications = certifications.filter((cert) => !cert.featured);
 
   return (
-    <section id="certifications" ref={sectionRef} className="section-spacing section-x-padding">
+    <section id="certifications" ref={sectionRef} className="section-spacing section-x-padding section-alt">
       <div className="max-w-7xl mx-auto">
         <div className={`fade-in-up ${isVisible ? 'animate' : ''} text-center mb-20`}>
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-primary-gradient">Certifications & Achievements</h2>

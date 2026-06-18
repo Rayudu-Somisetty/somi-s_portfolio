@@ -67,7 +67,7 @@ className="section-spacing section-x-padding"
               from experienced professionals in dynamic environments.
             </p>
             <a
-              href="#contact"
+              href="mailto:somisetty2005@gmail.com?subject=Let's%20Connect"
               className="inline-block px-8 py-4 bg-gradient-primary text-primary-foreground rounded-xl font-bold text-base hover:scale-105 transition-transform shadow-2xl hover:shadow-primary/25 focus:ring-2 focus:ring-primary min-w-[200px]"
             >
               Let's Connect

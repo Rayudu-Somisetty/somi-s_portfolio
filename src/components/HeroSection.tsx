@@ -118,7 +118,7 @@ const HeroSection = () => {
                 download="Rayudu_Somisetty_Resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-6 py-3 border border-primary/60 bg-white/[0.03] text-primary rounded-lg font-semibold hover:bg-primary hover:text-primary-foreground hover:-translate-y-0.5 transition-all focus:ring-2 focus:ring-primary inline-block backdrop-blur"
+                className="px-6 py-3 border border-primary/60 bg-white/[0.03] text-primary-glow rounded-lg font-semibold hover:bg-primary hover:text-primary-foreground hover:-translate-y-0.5 transition-all focus:ring-2 focus:ring-primary inline-block backdrop-blur"
                 onClick={(e) => {
                   const link = e.currentTarget;
                   fetch(link.href, { method: 'HEAD' }).catch(() => window.open('https://github.com/Rayudu-Somisetty', '_blank'));
